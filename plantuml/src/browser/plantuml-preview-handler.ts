@@ -40,6 +40,15 @@ export class PlantUmlPreviewHandler implements PreviewHandler {
         const contentElement = document.createElement('div');
         contentElement.classList.add(this.contentClass, this.theme);
         contentElement.innerHTML = renderedContent;
+        const candidates = contentElement.getElementsByTagName('svg');
+        if (candidates.length > 0) {
+            const svg = candidates.item(0);
+            if (svg) {
+                svg.attributes.removeNamedItem('zoomAndPan');
+                svg.attributes.removeNamedItem('viewBox');
+                svg.attributes.removeNamedItem('preserveAspectRatio');
+            }
+        }
         return contentElement;
     }
 
