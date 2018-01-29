@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "name": "electron-app",
+  "version": "0.0.0",
+  "dependencies": {
+    "@theia/core": "0.3.3",
+    "@theia/filesystem": "0.3.3",
+    "@theia/workspace": "0.3.3",
+    "@theia/preferences": "0.3.3",
+    "@theia/navigator": "0.3.3",
+    "@theia/process": "0.3.3",
+    "@theia/terminal": "0.3.3",
+    "@theia/editor": "0.3.3",
+    "@theia/languages": "0.3.3",
+    "@theia/markers": "0.3.3",
+    "@theia/monaco": "0.3.3",
+    "@theia/typescript": "0.3.3",
+    "@theia/messages": "0.3.3",
+    "@theia/plantuml": "0.1.0"
+  },
+  "devDependencies": {
+    "@theia/cli": "0.3.3"
+  },
+  "scripts": {
+    "prepare": "theia build",
+    "start": "theia start",
+    "watch": "theia build --watch"
+  },
+  "theia": {
+    "target": "electron"
+  }
+}
