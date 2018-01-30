@@ -6,16 +6,11 @@
  */
 
 import { interfaces } from 'inversify';
-import {
-    createPreferenceProxy,
-    PreferenceProxy,
-    PreferenceService,
-    PreferenceContribution,
-    PreferenceSchema
-} from '@theia/preferences-api/lib/common';
+import { createPreferenceProxy, PreferenceProxy, PreferenceService, PreferenceContribution, PreferenceSchema } from '@theia/preferences-api/lib/common';
 
 export const enum PLANTUML {
-    WEBSERVICE = 'plantuml.webservice'
+    WEBSERVICE = 'plantuml.webservice',
+    MONOCHROME = 'plantuml.monochrome',
 }
 
 export const PlantumlConfigSchema: PreferenceSchema = {
@@ -24,16 +19,22 @@ export const PlantumlConfigSchema: PreferenceSchema = {
         [PLANTUML.WEBSERVICE]: {
             'type': 'string',
             'description': 'The URL of the PlantUML rendering service.'
-        }
+        },
+        [PLANTUML.MONOCHROME]: {
+            'type': 'boolean',
+            'description': 'Use monochrome skincolor if no skinparams are specified.'
+        },
     }
 };
 
 export interface PlantumlConfiguration {
-    'plantuml.webservice': string
+    'plantuml.webservice': string;
+    'plantuml.monochrome': boolean;
 }
 
 export const defaultPlantumlConfiguration: PlantumlConfiguration = {
-    [PLANTUML.WEBSERVICE]: 'http://www.plantuml.com/plantuml/svg/'
+    [PLANTUML.WEBSERVICE]: 'http://www.plantuml.com/plantuml/svg/',
+    [PLANTUML.MONOCHROME]: true,
 };
 
 export const PlantumlPreferences = Symbol('PlantumlPreferences');
