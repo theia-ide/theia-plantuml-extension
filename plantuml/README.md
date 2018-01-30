@@ -2,6 +2,8 @@
 
 Shows diagram previews for PlantUML files.
 
+![PlantUML Extension](https://github.com/theia-ide/theia-plantuml-extension/blob/master/doc/images/plantuml.preview.png)
+
 The following options can be changed in `.theia/settings.json`.
 
 | preference key       | default                                 | description |
