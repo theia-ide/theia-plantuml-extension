@@ -33,14 +33,26 @@ export class PlantUmlPreviewHandler implements PreviewHandler {
     }
 
     async renderContent(params: RenderContentParams): Promise<HTMLElement | undefined> {
-        const content = this.addSkin(params.content);
-        const url = this.createRequestUrl(content);
-        const response = await fetch(url);
-        const renderedContent = await response.text();
         const contentElement = document.createElement('div');
         contentElement.classList.add(this.contentClass, this.theme);
-        contentElement.innerHTML = renderedContent;
-        const candidates = contentElement.getElementsByTagName('svg');
+
+        const content = this.useMonochromeTheme(params.content);
+        const url = this.createRequestUrl(content);
+        try {
+            const response = await fetch(url);
+            const renderedContent = await response.text();
+            contentElement.innerHTML = renderedContent;
+            this.fixSvg(contentElement);
+        } catch (error) {
+            console.log(error);
+            contentElement.classList.add('error');
+            contentElement.innerText = `Failed to load diagram from ${this.preferences[PLANTUML.WEBSERVICE]}`;
+        }
+        return contentElement;
+    }
+
+    protected fixSvg(element: HTMLElement): void {
+        const candidates = element.getElementsByTagName('svg');
         if (candidates.length > 0) {
             const svg = candidates.item(0);
             if (svg) {
@@ -49,7 +61,6 @@ export class PlantUmlPreviewHandler implements PreviewHandler {
                 svg.attributes.removeNamedItem('preserveAspectRatio');
             }
         }
-        return contentElement;
     }
 
     protected createRequestUrl(content: string): string {
@@ -58,12 +69,15 @@ export class PlantUmlPreviewHandler implements PreviewHandler {
         return serviceUri.withPath(serviceUri.path.join(encoded)).toString();
     }
 
-    protected addSkin(content: string) {
+    protected useMonochromeTheme(content: string): string {
+        if (!this.preferences[PLANTUML.MONOCHROME]) {
+            return content;
+        }
         if (content.indexOf('skinparam') > 0) {
             return content;
         }
         const monochrome = this.theme === 'dark' ? 'reverse' : 'true';
-        return content.replace('@startuml', `@startuml\nskinparam monochrome ${monochrome}\n`);
+        return content.replace('@startuml', `@startuml\nskinparam monochrome ${monochrome}\nskinparam backgroundColor transparent\n`);
     }
 
 }
