@@ -10,10 +10,10 @@
     "src"
   ],
   "dependencies": {
-    "@theia/core": "0.3.3",
-    "@theia/preview": "0.3.3",
-    "@theia/languages": "0.3.3",
-    "@theia/monaco": "^0.3.3",
+    "@theia/core": "^0.3.3",
+    "@theia/preview": "^0.3.4",
+    "@theia/languages": "^0.3.3",
+    "@theia/monaco": "^0.3.4",
     "plantuml-encoder": "^1.2.5"
   },
   "devDependencies": {
