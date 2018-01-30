@@ -9,10 +9,12 @@ import { ContainerModule } from 'inversify';
 import { PreviewHandler } from '@theia/preview/lib/browser';
 import { PlantUmlPreviewHandler } from './plantuml-preview-handler';
 import { bindPlantumlPreferences } from './plantuml-preferences';
+import { registerPlantUml } from './plantuml-language-config';
 
 import '../../src/browser/style/index.css';
 
 export default new ContainerModule(bind => {
+    registerPlantUml();
     bindPlantumlPreferences(bind);
     bind(PlantUmlPreviewHandler).toSelf().inSingletonScope();
     bind(PreviewHandler).toDynamicValue(ctx => ctx.container.get(PlantUmlPreviewHandler));
