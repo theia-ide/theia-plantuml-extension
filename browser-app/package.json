@@ -16,7 +16,7 @@
     "@theia/monaco": "latest",
     "@theia/typescript": "latest",
     "@theia/messages": "latest",
-    "@theia/plantuml": "^0.1.3"
+    "@theia/plantuml": "^0.1.4"
   },
   "devDependencies": {
     "@theia/cli": "latest"
