@@ -4975,10 +4975,6 @@ supports-color@^5.1.0:
   dependencies:
     has-flag "^2.0.0"
 
-svg-pan-zoom@^3.5.3:
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/svg-pan-zoom/-/svg-pan-zoom-3.5.3.tgz#e6b52a1b349716c78e7b5f92d0ed1cc1b860f5d8"
-
 svgo@^0.7.0:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-0.7.2.tgz#9f5772413952135c6fefbf40afe6a4faa88b4bb5"

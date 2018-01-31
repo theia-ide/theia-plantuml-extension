@@ -54,11 +54,25 @@ export class PlantUmlPreviewHandler implements PreviewHandler {
     protected fixSvg(element: HTMLElement): void {
         const candidates = element.getElementsByTagName('svg');
         if (candidates.length > 0) {
-            const svg = candidates.item(0);
-            if (svg) {
-                svg.attributes.removeNamedItem('zoomAndPan');
-                svg.attributes.removeNamedItem('viewBox');
-                svg.attributes.removeNamedItem('preserveAspectRatio');
+            const svgElement = candidates.item(0);
+            if (svgElement) {
+                svgElement.removeAttribute('zoomAndPan');
+                svgElement.setAttribute('style', 'width: 100%; height: 100%;');
+                svgElement.setAttribute('preserveAspectRatio', 'xMinYMin meet');
+                const viewBoxValue = svgElement.getAttribute('viewBox') || '';
+                const width = svgElement.getAttribute('width') || '';
+                const height = svgElement.getAttribute('height') || '';
+                svgElement.removeAttribute('height');
+                svgElement.removeAttribute('width');
+                element.addEventListener('dblclick', mouseEvent => {
+                    if (svgElement.getAttribute('viewBox')) {
+                        svgElement.removeAttribute('viewBox');
+                        svgElement.setAttribute('style', `width: ${width}; height: ${height};`);
+                    } else {
+                        svgElement.setAttribute('viewBox', viewBoxValue);
+                        svgElement.setAttribute('style', 'width: 100%; height: 100%;');
+                    }
+                });
             }
         }
     }

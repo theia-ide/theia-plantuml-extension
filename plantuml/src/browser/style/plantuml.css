@@ -7,8 +7,9 @@
 
 .plantuml-preview {
     display: block;
-    overflow: auto;
+    overflow: scroll;
     height: 100%;
+    width: 100%;
 }
 
 .plantuml-preview.error {
@@ -19,4 +20,6 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
 }
+
