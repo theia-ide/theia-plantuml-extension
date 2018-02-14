@@ -142,7 +142,7 @@
   dependencies:
     "@theia/application-package" "^0.3.7"
 
-"@theia/core@^0.3.3", "@theia/core@^0.3.7", "@theia/core@latest":
+"@theia/core@^0.3.7", "@theia/core@latest":
   version "0.3.7"
   resolved "https://registry.yarnpkg.com/@theia/core/-/core-0.3.7.tgz#43591880283ffcab6dffd7979aa038bdd6368403"
   dependencies:
@@ -191,7 +191,7 @@
     touch "^3.1.0"
     trash "^4.0.1"
 
-"@theia/languages@^0.3.3", "@theia/languages@^0.3.7", "@theia/languages@latest":
+"@theia/languages@^0.3.7", "@theia/languages@latest":
   version "0.3.7"
   resolved "https://registry.yarnpkg.com/@theia/languages/-/languages-0.3.7.tgz#fd98c186cee85eb1a44fc940246b4b0380cb767f"
   dependencies:
@@ -215,7 +215,7 @@
   dependencies:
     "@theia/core" "^0.3.7"
 
-"@theia/monaco@^0.3.4", "@theia/monaco@^0.3.7", "@theia/monaco@latest":
+"@theia/monaco@^0.3.7", "@theia/monaco@latest":
   version "0.3.7"
   resolved "https://registry.yarnpkg.com/@theia/monaco/-/monaco-0.3.7.tgz#2ab93f1324b319cd477f7abfec62fc455be3c8bc"
   dependencies:
@@ -264,7 +264,7 @@
     fs-extra "^4.0.2"
     jsonc-parser "^1.0.1"
 
-"@theia/preview@^0.3.4":
+"@theia/preview@^0.3.7":
   version "0.3.7"
   resolved "https://registry.yarnpkg.com/@theia/preview/-/preview-0.3.7.tgz#9e422f036cab82d1bf57762c78525c593f9bb5c6"
   dependencies:
