@@ -6,7 +6,7 @@
  */
 
 import { interfaces } from 'inversify';
-import { createPreferenceProxy, PreferenceProxy, PreferenceService, PreferenceContribution, PreferenceSchema } from '@theia/preferences-api/lib/common';
+import { createPreferenceProxy, PreferenceProxy, PreferenceService, PreferenceContribution, PreferenceSchema } from '@theia/core/lib/browser/preferences';
 
 export const enum PLANTUML {
     WEBSERVICE = 'plantuml.webservice',
@@ -18,11 +18,13 @@ export const PlantumlConfigSchema: PreferenceSchema = {
     'properties': {
         [PLANTUML.WEBSERVICE]: {
             'type': 'string',
-            'description': 'The URL of the PlantUML rendering service.'
+            'description': 'The URL of the PlantUML rendering service.',
+            'default': 'http://www.plantuml.com/plantuml/svg/'
         },
         [PLANTUML.MONOCHROME]: {
             'type': 'boolean',
-            'description': 'Use monochrome skincolor if no skinparams are specified.'
+            'description': 'Use monochrome skincolor if no skinparams are specified.',
+            'default': true
         },
     }
 };
@@ -32,21 +34,16 @@ export interface PlantumlConfiguration {
     'plantuml.monochrome': boolean;
 }
 
-export const defaultPlantumlConfiguration: PlantumlConfiguration = {
-    [PLANTUML.WEBSERVICE]: 'http://www.plantuml.com/plantuml/svg/',
-    [PLANTUML.MONOCHROME]: true,
-};
-
 export const PlantumlPreferences = Symbol('PlantumlPreferences');
 export type PlantumlPreferences = PreferenceProxy<PlantumlConfiguration>;
 
 export function createPlantumlPreferences(preferences: PreferenceService): PlantumlPreferences {
-    return createPreferenceProxy(preferences, defaultPlantumlConfiguration, PlantumlConfigSchema);
+    return createPreferenceProxy(preferences, PlantumlConfigSchema);
 }
 
 export function bindPlantumlPreferences(bind: interfaces.Bind): void {
     bind(PlantumlPreferences).toDynamicValue(ctx => {
-        const preferences = ctx.container.get(PreferenceService);
+        const preferences = ctx.container.get<PreferenceService>(PreferenceService);
         return createPlantumlPreferences(preferences);
     });
 

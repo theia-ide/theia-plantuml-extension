@@ -7,8 +7,9 @@
 
 import { ContainerModule } from 'inversify';
 import { PreviewHandler } from '@theia/preview/lib/browser';
+import { PreferenceContribution } from '@theia/core/lib/browser/preferences';
 import { PlantUmlPreviewHandler } from './plantuml-preview-handler';
-import { bindPlantumlPreferences } from './plantuml-preferences';
+import { bindPlantumlPreferences, PlantumlConfigSchema } from './plantuml-preferences';
 import { registerPlantUml } from './plantuml-language-config';
 
 import '../../src/browser/style/index.css';
@@ -16,6 +17,8 @@ import '../../src/browser/style/index.css';
 export default new ContainerModule(bind => {
     registerPlantUml();
     bindPlantumlPreferences(bind);
+    bind(PreferenceContribution).toConstantValue({ schema: PlantumlConfigSchema });
+
     bind(PlantUmlPreviewHandler).toSelf().inSingletonScope();
     bind(PreviewHandler).toDynamicValue(ctx => ctx.container.get(PlantUmlPreviewHandler));
 });
