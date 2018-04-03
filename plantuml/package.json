@@ -10,10 +10,10 @@
     "src"
   ],
   "dependencies": {
-    "@theia/core": "^0.3.7",
-    "@theia/preview": "^0.3.7",
-    "@theia/languages": "^0.3.7",
-    "@theia/monaco": "^0.3.7",
+    "@theia/core": "^0.3.8",
+    "@theia/preview": "^0.3.8",
+    "@theia/languages": "^0.3.8",
+    "@theia/monaco": "^0.3.8",
     "plantuml-encoder": "^1.2.5"
   },
   "devDependencies": {
@@ -23,7 +23,7 @@
     "mocha": "^4.0.1",
     "rimraf": "^2.6.2",
     "ts-node": "^4.0.1",
-    "typescript": "^2.6.2",
+    "typescript": "^2.8.1",
     "reflect-metadata": "^0.1.12"
   },
   "scripts": {
