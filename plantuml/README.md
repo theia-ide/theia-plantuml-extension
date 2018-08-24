@@ -1,8 +1,8 @@
 # Theia - PlantUML Extension
 
-Shows diagram previews for PlantUML files.
+Shows diagram preview for PlantUML files.
 
-![PlantUML Extension](https://github.com/theia-ide/theia-plantuml-extension/blob/master/doc/images/plantuml.preview.png)
+![PlantUML Extension](https://raw.githubusercontent.com/theia-ide/theia-plantuml-extension/master/doc/images/plantuml.preview.png)
 
 The following options can be changed in `.theia/settings.json`.
 
