@@ -7,15 +7,23 @@
     "access": "public"
   },
   "version": "0.1.6",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theia-ide/theia-plantuml-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theia-ide/theia-plantuml-extension/issues"
+  },
+  "homepage": "https://github.com/theia-ide/theia-plantuml-extension",
   "license": "Apache-2.0",
   "files": [
+    "data",
     "lib",
     "src"
   ],
   "dependencies": {
     "@theia/core": "next",
     "@theia/preview": "next",
-    "@theia/languages": "next",
     "@theia/monaco": "next",
     "plantuml-encoder": "latest"
   },

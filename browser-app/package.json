@@ -10,12 +10,14 @@
     "@theia/navigator": "next",
     "@theia/process": "next",
     "@theia/terminal": "next",
+    "@theia/file-search": "next",
     "@theia/editor": "next",
     "@theia/languages": "next",
     "@theia/markers": "next",
     "@theia/monaco": "next",
     "@theia/typescript": "next",
     "@theia/messages": "next",
+    "@theia/preview": "next",
     "@theia/plantuml": "*"
   },
   "devDependencies": {
