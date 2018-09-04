@@ -46,7 +46,7 @@ export class PlantUmlPreviewHandler implements PreviewHandler {
         } catch (error) {
             console.log(error);
             contentElement.classList.add('error');
-            contentElement.innerText = `Failed to load diagram from ${this.preferences[PLANTUML.WEBSERVICE]}`;
+            contentElement.innerText = `Failed to load diagram from ${this.webserviceUrl}`;
         }
         return contentElement;
     }
@@ -77,9 +77,13 @@ export class PlantUmlPreviewHandler implements PreviewHandler {
         }
     }
 
+    get webserviceUrl() {
+        return `${window.location.protocol}${this.preferences[PLANTUML.WEBSERVICE]}`;
+    }
+
     protected createRequestUrl(content: string): string {
         const encoded = plantumlEncoder.encode(content);
-        const serviceUri = new URI(this.preferences[PLANTUML.WEBSERVICE]);
+        const serviceUri = new URI(this.webserviceUrl);
         return serviceUri.withPath(serviceUri.path.join(encoded)).toString();
     }
 

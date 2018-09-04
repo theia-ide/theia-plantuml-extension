@@ -1,0 +1,27 @@
+sudo: required
+language: node_js
+node_js: '8'
+git:
+  depth: 1
+cache:
+  yarn: true
+  directories:
+  - node_modules
+branches:
+  only:
+  - master
+install:
+- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
+- export PATH=$HOME/.yarn/bin:$PATH ;
+script:
+- yarn
+before_deploy:
+- printf "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}\n" >> ~/.npmrc
+deploy:
+  provider: script
+  script: yarn run publish:next
+  skip_cleanup: true
+  on:
+    branch: master
+env:
+  secure: bT3/Zc6a8W4t8C3/fnmjndNvRJIyDxjSZZTZ5przpRn1Dp5fS9Cdunlv0dLv3vry85J/G6ZNaGXnXRv1JCe88r09CGQKDREJI/G2GC6u1E+ypLaZu1DhfMwwsG9Jt7B/G9ftV/WkiEtAI8JOasUNuRW2ObBF34BRxMaLLVKXheBEnK+01ffAoU/MultItD8uA8Ft/4ZwL+jrLoN0wM74UO2jXLK+VKUrRhR3qxaYkoYX9Xva56jb13KA13TgDnw7PaAveSMw3N5Ea3uSoEFQs7/+hcC+7Irzp85Bfi+gKHbAbG90z/O1z8WzvOS2IkScTYbc0R/axuEM5kQTUeAVf86RA/J7XGs0goWQNmpMsbUsiarJLYKlqjwd24kUPFFdUg2pO+M4Y21urasNNLW8kuWzXe4t5qZTL7xQ/OKklU6dQ+Gobhv+qSdmI8UlfPVKeMCGcZWErITK4YGyogAc9RYREMl0EdIUJiAxWycjaa8ndx16sdF46D1Qq62EV8jmfGFDzz46FsjvjdvD3WSRP/ieBkt4oFUwiP6hUv1TDmu4GKRVmAhke93gsrYyocuCFK1f5YGuM4avAlBM78kv64LwVdh1h8NzLMZapRfKl1e1V+OxI+uFaPA/byEsalbJHmpyJ8udCWk6+L67Dr8xGJKXMJevPizrvvR5xomf6ZA=

@@ -18,8 +18,8 @@ export const PlantumlConfigSchema: PreferenceSchema = {
     'properties': {
         [PLANTUML.WEBSERVICE]: {
             'type': 'string',
-            'description': 'The URL of the PlantUML rendering service.',
-            'default': 'http://www.plantuml.com/plantuml/svg/'
+            'description': 'The protocol-relative URL of the PlantUML rendering service.',
+            'default': '//www.plantuml.com/plantuml/svg/'
         },
         [PLANTUML.MONOCHROME]: {
             'type': 'boolean',

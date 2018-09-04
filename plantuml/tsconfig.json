@@ -1,11 +1,7 @@
 {
     "compilerOptions": {
-        "declaration": true,
-        "noImplicitAny": true,
-        "noEmitOnError": false,
-        "noImplicitThis": true,
-        "strictNullChecks": true,
         "strict": true,
+        "skipLibCheck": true,
         "experimentalDecorators": true,
         "noUnusedLocals": true,
         "emitDecoratorMetadata": true,
@@ -17,6 +13,11 @@
             "es6",
             "dom"
         ],
-        "sourceMap": true
-    }
+        "sourceMap": true,
+        "rootDir": "src",
+        "outDir": "lib"
+    },
+    "include": [
+        "src"
+    ]
 }

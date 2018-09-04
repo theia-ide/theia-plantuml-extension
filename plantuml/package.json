@@ -3,35 +3,39 @@
   "keywords": [
     "theia-extension"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.1.6",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theia-ide/theia-plantuml-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theia-ide/theia-plantuml-extension/issues"
+  },
+  "homepage": "https://github.com/theia-ide/theia-plantuml-extension",
   "license": "Apache-2.0",
   "files": [
+    "data",
     "lib",
     "src"
   ],
   "dependencies": {
-    "@theia/core": "^0.3.8",
-    "@theia/preview": "^0.3.8",
-    "@theia/languages": "^0.3.8",
-    "@theia/monaco": "^0.3.8",
-    "plantuml-encoder": "^1.2.5"
+    "@theia/core": "next",
+    "@theia/preview": "next",
+    "@theia/monaco": "next",
+    "plantuml-encoder": "latest"
   },
   "devDependencies": {
-    "@types/chai": "^4.0.10",
-    "@types/mocha": "^2.2.44",
-    "chai": "^4.1.2",
-    "mocha": "^4.0.1",
-    "rimraf": "^2.6.2",
-    "ts-node": "^4.0.1",
-    "typescript": "^2.8.1",
-    "reflect-metadata": "^0.1.12"
+    "rimraf": "latest",
+    "typescript": "latest"
   },
   "scripts": {
     "prepare": "yarn run clean && yarn run build",
     "clean": "rimraf lib",
-    "build": "tsc -p compile.tsconfig.json",
-    "watch": "tsc -w -p compile.tsconfig.json",
-    "test": "mocha -t 20000ms --require ts-node/register --require reflect-metadata/Reflect --watch-extensions ts \"./src/**/*.*spec.ts\""
+    "build": "tsc",
+    "watch": "tsc -w"
   },
   "theiaExtensions": [
     {
