@@ -44,7 +44,8 @@ export class PlantumlGrammarContribution implements LanguageGrammarDefinitionCon
             "extensions": [
                 ".plantuml",
                 ".pu",
-                ".puml"
+                ".puml",
+                ".uml"
             ],
             "mimetypes": [
                 "text/plantuml"

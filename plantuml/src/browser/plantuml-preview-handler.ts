@@ -29,7 +29,11 @@ export class PlantUmlPreviewHandler implements PreviewHandler {
     }
 
     canHandle(uri: URI): number {
-        return uri.path.ext === '.plantuml' ? 500 : 0;
+        const extension: string = uri.path.ext;
+        if ((extension === '.plantuml') || (extension === '.puml') || (extension === '.uml') || (extension === '.pu')) {
+            return 500;
+        }
+        return 0;
     }
 
     async renderContent(params: RenderContentParams): Promise<HTMLElement | undefined> {
