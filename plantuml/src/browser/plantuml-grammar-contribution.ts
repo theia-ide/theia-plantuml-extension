@@ -13,6 +13,7 @@ export const PLANTUML_LANGUAGE_NAME = 'PlantUML';
 
 @injectable()
 export class PlantumlGrammarContribution implements LanguageGrammarDefinitionContribution {
+    readonly scopeName = 'source.wsd';
 
     readonly config: monaco.languages.LanguageConfiguration = {
         comments: {
@@ -54,17 +55,17 @@ export class PlantumlGrammarContribution implements LanguageGrammarDefinitionCon
 
         monaco.languages.setLanguageConfiguration(PLANTUML_LANGUAGE_ID, this.config);
 
-        const jsonGrammar = require('../../data/plantuml.tmLanguage.json');
-        registry.registerTextmateGrammarScope('source.json', {
+        const plantumlGrammar = require('../../data/plantuml.tmLanguage.json');
+        registry.registerTextmateGrammarScope(this.scopeName, {
             async getGrammarDefinition() {
                 return {
                     format: 'json',
-                    content: jsonGrammar
+                    content: plantumlGrammar
                 };
             }
         });
 
-        registry.mapLanguageIdToTextmateGrammar(PLANTUML_LANGUAGE_ID, 'source.json');
+        registry.mapLanguageIdToTextmateGrammar(PLANTUML_LANGUAGE_ID, this.scopeName);
 
     }
 }
