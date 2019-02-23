@@ -20,5 +20,5 @@ yarn
 Run the example
 
 ```
-cd browser-example && yarn start --hostname 0.0.0.0
+cd browser-app && yarn start --hostname 0.0.0.0
 ```
