@@ -7,18 +7,16 @@
 
 import { ContainerModule } from 'inversify';
 import { PreviewHandler } from '@theia/preview/lib/browser';
-import { PreferenceContribution } from '@theia/core/lib/browser/preferences';
 import { PlantUmlPreviewHandler } from './plantuml-preview-handler';
-import { bindPlantumlPreferences, PlantumlConfigSchema } from './plantuml-preferences';
+import { bindPlantumlPreferences } from './plantuml-preferences';
 import { LanguageGrammarDefinitionContribution } from "@theia/monaco/lib/browser/textmate";
-import { PlantumlGrammarContribution } from './plantuml-grammar-contribution';  
+import { PlantumlGrammarContribution } from './plantuml-grammar-contribution';
 
 import '../../src/browser/style/index.css';
 
 export default new ContainerModule(bind => {
     bind(LanguageGrammarDefinitionContribution).to(PlantumlGrammarContribution).inSingletonScope();
     bindPlantumlPreferences(bind);
-    bind(PreferenceContribution).toConstantValue({ schema: PlantumlConfigSchema });
 
     bind(PlantUmlPreviewHandler).toSelf().inSingletonScope();
     bind(PreviewHandler).toDynamicValue(ctx => ctx.container.get(PlantUmlPreviewHandler));
